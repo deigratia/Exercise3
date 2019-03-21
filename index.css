@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Germania+One');
+
+.div {
+    margin-top: 20px;
+    height: 800px;
+}
+
+.footer {
+    margin-top: 20px;
+}
+
+.judul {
+    display: flex;
+    justify-content: center;
+}
+h1{
+    font-family: 'Germania One',
+    cursive;
+    color: blue;
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./DataTables/datatables.min.css" />
+    <link rel="stylesheet" type="text/css" href="./index.css">
+    <link rel="shortcut icon" href="./photo/logo.ico">
+    <title>Data Json</title>
+</head>
+
+<body>
+    <div class="judul">
+        <h1>Data Json</h1>
+    </div>
+    <div class="div">
+        <div class="container">
+            <table id="example" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th scope="col">name</th>
+                        <th scope="col">Rotation Period</th>
+                        <th scope="col">Orbital Periode</th>
+                        <th scope="col">Diameter</th>
+                        <th scope="col">Climate</th>
+                        <th scope="col">Gravity</th>
+                        <th scope="col">Terrain</th>
+                        <th scope="col">Surface Water</th>
+                        <th scope="col">Population</th>
+                    </tr>
+                </thead>
+                <tbody id="mypanel">
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="footer">
+            <footer class="page-footer font-small blue">
+                <div class="footer-copyright text-center py-3">© 2018 Copyright:
+                    <a href="https://github.com/deigratia"> Dei Gratia</a>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script type="text/javascript" src="./DataTables/datatables.min.js"></script>
+    <script src="./index.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: 'https://swapi.co/api/planets/',
+                success: function (data) {
+                    console.log(data.results);
+                    var text = '';
+                    data.results.map((data, index) => {
+                        text += '<tr>';
+                        text += '<td>' + data.name + '</td>';
+                        text += '<td>' + data.rotation_period + '</td>';
+                        text += '<td>' + data.orbital_period + '</td>';
+                        text += '<td>' + data.diameter + '</td>';
+                        text += '<td>' + data.climate + '</td>';
+                        text += '<td>' + data.gravity + '</td>';
+                        text += '<td>' + data.terrain + '</td>';
+                        text += '<td>' + data.surface_water + '</td>';
+                        text += '<td>' + data.population + '</td>';
+                        text += '</tr>';
+
+                    })
+                    $("#mypanel").html(text);
+                    $('#example').DataTable()
+                },
+            });
+        })
+    </script>
+
+
+</body>
+
+</html>
